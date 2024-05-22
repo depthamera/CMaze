@@ -128,14 +128,17 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="create.c" />
+    <ClCompile Include="edit.c" />
     <ClCompile Include="input.c" />
     <ClCompile Include="main.c" />
     <ClCompile Include="menu.c" />
+    <ClCompile Include="stage.c" />
     <ClCompile Include="stages.c" />
     <ClCompile Include="utility.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="create.h" />
+    <ClInclude Include="edit.h" />
     <ClInclude Include="input.h" />
     <ClInclude Include="main.h" />
     <ClInclude Include="menu.h" />

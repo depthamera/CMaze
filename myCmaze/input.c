@@ -19,8 +19,14 @@ int GetInput() {
 	switch (key) {
 	case 13:
 		return KEY_ENTER;
+	case 99:
+		return KEY_C;
+	case 100:
+		return KEY_D;
+	case 113:
+		return KEY_Q;
 	default:
-		return 0;
+		return key;
 	}
 	
 }

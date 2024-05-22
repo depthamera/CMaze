@@ -1,26 +1,26 @@
 #include "create.h"
 
-int stageCount, selectedStage;
-char* stageNames[100] = { NULL, };
+int fileCount, selectedFile, isActive = 0;
+char* fileNames[100] = { NULL, };
 
 static void Init() {
 	system("cls");
 
-	stageCount = 0;
+	fileCount = 0;
 	WIN32_FIND_DATA fd;
 	char dir[] = "stage/*.stage";
 	HANDLE findHandle = FindFirstFile(dir, &fd);
 
 	if (findHandle != INVALID_HANDLE_VALUE) {
 		do {
-			stageNames[stageCount] = (char*)malloc(strlen(fd.cFileName) + 1);
-			strcpy(stageNames[stageCount], fd.cFileName);
-			stageCount++;
+			fileNames[fileCount] = (char*)malloc(strlen(fd.cFileName) + 1);
+			strcpy(fileNames[fileCount], fd.cFileName);
+			fileCount++;
 		} while (FindNextFile(findHandle, &fd));
 	}
 
-	for (int i = 0; i < stageCount; i++) {
-		printf("%s\n", stageNames[i]);
+	for (int i = 0; i < fileCount; i++) {
+		printf("%s\n", fileNames[i]);
 	}
 }
 
@@ -36,25 +36,45 @@ static void Draw() {
 	GotoXY(CONSOLE_COLS / 2 - 35, CREATE_COORD_Y + 2);
 	printf("│ E: 스테이지 수정 | C: 스테이지 생성 | D: 스테이지 삭제 | Q: 돌아가기│");
 
-	if (!stageCount) {
+	if (!fileCount) {
 		GotoXY(CONSOLE_COLS / 2 - 10, CREATE_COORD_Y);
 		printf("불러올 파일이 없습니다");
 	}
 	else {
-		int len = strlen(stageNames[selectedStage]);
+		int len = (int)strlen(fileNames[selectedFile]);
 		GotoXY((CONSOLE_COLS - len) / 2 + 1, CREATE_COORD_Y);
-		printf("%s", stageNames[selectedStage]);
+		printf("%s", fileNames[selectedFile]);
 	}
 }
 
+static void RemoveFile() {
+	char fileName[100] = "./stage/";
+	strcat(fileName, fileNames[selectedFile]);
+	remove(fileName);
+	Init();
+}
 static void Input() {
 	switch (GetInput()) {
-		
+	case KEY_UP:
+		if (--selectedFile == -1) selectedFile = fileCount - 1;
+		break;
+	case KEY_DOWN:
+		if (++selectedFile == fileCount) selectedFile = 0;
+		break;
+	case KEY_C:
+		StartEdit(NULL);
+		break;
+	case KEY_D:
+		RemoveFile();
+		break;
+	case KEY_Q:
+		isActive = 0;
+		break;
 	}
 }
 
 static void Loop() {
-	while (1) {
+	while (isActive) {
 		Draw();
 		Input();
 		system("cls");
@@ -62,6 +82,7 @@ static void Loop() {
 }
 
 void StartCreate() {
+	isActive = 1;
 	Init();
 	Loop();
 }

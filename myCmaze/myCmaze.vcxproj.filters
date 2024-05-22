@@ -33,6 +33,12 @@
     <ClCompile Include="create.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="edit.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="stage.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -54,6 +60,9 @@
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="stage.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="edit.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>

@@ -1,12 +1,14 @@
 #include "create.h"
 
-int fileCount, selectedFile, isActive = 0;
+int fileCount, selectedFile, isActive;
 char* fileNames[100] = { NULL, };
 
 static void Init() {
 	system("cls");
 
 	fileCount = 0;
+	selectedFile = 0;
+
 	WIN32_FIND_DATA fd;
 	char dir[] = "stage/*.stage";
 	HANDLE findHandle = FindFirstFile(dir, &fd);
@@ -66,6 +68,9 @@ static void Input() {
 		break;
 	case KEY_D:
 		RemoveFile();
+		break;
+	case KEY_E:
+		if (fileCount) StartEdit(fileNames[selectedFile]);
 		break;
 	case KEY_Q:
 		isActive = 0;

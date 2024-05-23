@@ -7,5 +7,6 @@
 #define CONSOLE_LINES 50
 
 void InitConsole();
+void VisibleCursor(int);
 void GotoXY(int, int);
 

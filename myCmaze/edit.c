@@ -108,6 +108,13 @@ static void SaveFile() {
 }
 
 static void PutBlock(char b) {
+	if (openedStage->startX == cursorX && openedStage->startY == cursorY) {
+		openedStage->startX = openedStage->startY = -1;
+	}
+	if (openedStage->endX == cursorX && openedStage->endY == cursorY) {
+		openedStage->endX = openedStage->endY = -1;
+	}
+
 	switch (b) {
 	case STAGE_BLOCK_START: {
 		if (openedStage->startX != -1) {
@@ -121,10 +128,19 @@ static void PutBlock(char b) {
 		printf("@");
 		break;
 		}
-	case STAGE_BLOCK_WALL: {
-		if (openedStage->startX == cursorX && openedStage->startY == cursorY) {
-			openedStage->startX = openedStage->startY = -1;
+	case STAGE_BLOCK_END: {
+		if (openedStage->endX != -1) {
+			openedStage->map[openedStage->endY][openedStage->endX] = ' ';
+			GotoXY(pivotX + openedStage->endX, pivotY + openedStage->endY);
+			printf(" ");
 		}
+		openedStage->endX = cursorX;
+		openedStage->endY = cursorY;
+		GotoXY(pivotX + openedStage->endX, pivotY + openedStage->endY);
+		printf("$");
+		break;
+	}
+	case STAGE_BLOCK_WALL: {
 		GotoXY(pivotX + cursorX, pivotY + cursorY);
 		printf("#");
 		break;
@@ -151,6 +167,9 @@ static void Input() {
 		break;
 	case KEY_W:
 		PutBlock(STAGE_BLOCK_WALL);
+		break;
+	case KEY_E:
+		PutBlock(STAGE_BLOCK_END);
 		break;
 	case KEY_S:
 		SaveFile();

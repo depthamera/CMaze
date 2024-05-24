@@ -10,6 +10,7 @@
 #define KEY_E 9
 #define KEY_S 10
 #define KEY_W 11
+#define KEY_U 12
 #include <stdio.h>
 
 int GetInput();

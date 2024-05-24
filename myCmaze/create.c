@@ -35,8 +35,10 @@ static void Draw() {
 	printf("│");
 	GotoXY(CONSOLE_COLS / 2 - 30, CREATE_COORD_Y + 1);
 	printf("└───────────────────────────────────────────────────────────┘");
-	GotoXY(CONSOLE_COLS / 2 - 35, CREATE_COORD_Y + 2);
-	printf("│ E: 스테이지 수정 | C: 스테이지 생성 | D: 스테이지 삭제 | Q: 돌아가기│");
+	GotoXY(CONSOLE_COLS / 2 - 28, CREATE_COORD_Y + 2);
+	printf("│ E: 스테이지 수정 | C: 스테이지 생성 | D: 스테이지 삭제 |");
+	GotoXY(CONSOLE_COLS / 2 - 17, CREATE_COORD_Y + 4);
+	printf("| U: 스테이지 업로드 | Q: 돌아가기│");
 
 	if (!fileCount) {
 		GotoXY(CONSOLE_COLS / 2 - 10, CREATE_COORD_Y);
@@ -71,6 +73,9 @@ static void Input() {
 		break;
 	case KEY_E:
 		if (fileCount) StartEdit(fileNames[selectedFile]);
+		break;
+	case KEY_U:
+		UploadFile(fileNames[selectedFile]);
 		break;
 	case KEY_Q:
 		isActive = 0;

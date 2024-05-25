@@ -133,7 +133,7 @@
     <ClCompile Include="input.c" />
     <ClCompile Include="main.c" />
     <ClCompile Include="menu.c" />
-    <ClCompile Include="stage.c" />
+    <ClCompile Include="play.c" />
     <ClCompile Include="stages.c" />
     <ClCompile Include="upload.c" />
     <ClCompile Include="utility.c" />
@@ -146,6 +146,7 @@
     <ClInclude Include="input.h" />
     <ClInclude Include="main.h" />
     <ClInclude Include="menu.h" />
+    <ClInclude Include="play.h" />
     <ClInclude Include="stage.h" />
     <ClInclude Include="stages.h" />
     <ClInclude Include="upload.h" />

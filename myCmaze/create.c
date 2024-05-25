@@ -1,7 +1,7 @@
 #include "create.h"
 
-int fileCount, selectedFile, isActive;
-char* fileNames[100];
+static int fileCount, selectedFile, isActive;
+static char* fileNames[100];
 
 static void Init() {
 	system("cls");
@@ -39,7 +39,9 @@ static void Draw() {
 	printf("│");
 	GotoXY(CONSOLE_COLS / 2 - 30, CREATE_COORD_Y + 1);
 	printf("└───────────────────────────────────────────────────────────┘");
-	GotoXY(CONSOLE_COLS / 2 - 28, CREATE_COORD_Y + 2);
+	GotoXY(CONSOLE_COLS / 2 - 10, CREATE_COORD_Y + 2);
+	printf("| Enter: 스테이지 플레이 |");
+	GotoXY(CONSOLE_COLS / 2 - 28, CREATE_COORD_Y + 3);
 	printf("│ E: 스테이지 수정 | C: 스테이지 생성 | D: 스테이지 삭제 |");
 	GotoXY(CONSOLE_COLS / 2 - 17, CREATE_COORD_Y + 4);
 	printf("| U: 스테이지 업로드 | Q: 돌아가기│");
@@ -91,6 +93,9 @@ static void Input() {
 		break;
 	case KEY_Q:
 		Quit();
+		break;
+	case KEY_ENTER:
+		if (fileCount) PlayStage(fileNames[selectedFile]);
 		break;
 	}
 }

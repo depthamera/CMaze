@@ -1,8 +1,8 @@
 #include "upload.h"
 
-char data[UPLOAD_SIZE_MAX];
-char chunk[UPLOAD_SIZE_MAX * 2 + 1];
-char query[UPLOAD_SIZE_MAX * 5];
+static char data[UPLOAD_SIZE_MAX];
+static char chunk[UPLOAD_SIZE_MAX * 2 + 1];
+static char query[UPLOAD_SIZE_MAX * 5];
 
 void UploadFile(char* name) {
 	MYSQL* connection = NULL, con = { 0 };

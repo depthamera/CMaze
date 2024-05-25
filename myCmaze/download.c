@@ -1,7 +1,7 @@
 #include "download.h"
 
-int selectedFile, fileCount, isActive, * stageIds;
-char* fileNames[100];
+static int selectedFile, fileCount, isActive, * stageIds;
+static char* fileNames[100];
 
 
 static void Init() {

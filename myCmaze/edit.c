@@ -1,8 +1,8 @@
 #include "edit.h"
 
-int isActive, cursorX, cursorY, pivotX, pivotY;
-char fileDir[100];
-Stage *openedStage;
+static int isActive, cursorX, cursorY, pivotX, pivotY;
+static char fileDir[100];
+static Stage *openedStage;
 
 static void GenerateEmptyStage() {
 	char str[100] = { 0, };
@@ -157,6 +157,7 @@ static void PutBlock(char b) {
 	}
 	openedStage->map[cursorY][cursorX] = b;
 }
+
 static void Input() {
 	switch (GetInput()) {
 	case KEY_UP:
@@ -186,10 +187,8 @@ static void Input() {
 		VisibleCursor(0);
 		break;
 	}
-	
-	
-
 }
+
 static void Loop() {
 	while (isActive) {
 		Draw();

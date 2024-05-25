@@ -1,7 +1,7 @@
 #include "utility.h"
 
-HANDLE consoleHandle = NULL;
-CONSOLE_CURSOR_INFO cursorInfo = { 0 };
+static HANDLE consoleHandle = NULL;
+static CONSOLE_CURSOR_INFO cursorInfo = { 0 };
 
 void InitConsole() {
 	// 콘솔창의 크기를 지정

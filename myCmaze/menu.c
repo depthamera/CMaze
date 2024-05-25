@@ -1,8 +1,8 @@
 #include "menu.h"
 
-int selectedMenu = 0;
-char* menu[MENU_MAX] = { {"플 레 이"}, {"제    작"}, {"다운로드"}, {"종    료"} };
-void (*action[MENU_MAX])();
+static int selectedMenu = 0;
+static char* menu[MENU_MAX] = { {"플 레 이"}, {"제    작"}, {"다운로드"}, {"종    료"} };
+static void (*action[MENU_MAX])();
 
 static void Exit() { exit(0); }
 

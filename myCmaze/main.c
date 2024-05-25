@@ -5,5 +5,7 @@ int main() {
 
 	//printf("%d", GetInput());
 
-	MenuStart();
+	//MenuStart();
+
+	ShowMessage("업로드에 성공했습니다");
 }

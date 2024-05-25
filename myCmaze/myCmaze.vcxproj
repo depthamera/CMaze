@@ -141,6 +141,7 @@
   <ItemGroup>
     <ClInclude Include="create.h" />
     <ClInclude Include="database.h" />
+    <ClInclude Include="download.h" />
     <ClInclude Include="edit.h" />
     <ClInclude Include="input.h" />
     <ClInclude Include="main.h" />

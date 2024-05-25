@@ -1,7 +1,7 @@
 #include "create.h"
 
 int fileCount, selectedFile, isActive;
-char* fileNames[100] = { NULL, };
+char* fileNames[100];
 
 static void Init() {
 	system("cls");
@@ -15,7 +15,7 @@ static void Init() {
 
 	if (findHandle != INVALID_HANDLE_VALUE) {
 		do {
-			fileNames[fileCount] = (char*)malloc(strlen(fd.cFileName) + 1);
+			fileNames[fileCount] = (char*)malloc(sizeof(fd.cFileName));
 			strcpy(fileNames[fileCount], fd.cFileName);
 			fileCount++;
 		} while (FindNextFile(findHandle, &fd));
@@ -27,6 +27,10 @@ static void Init() {
 }
 
 static void Draw() {
+	if (fileCount) {
+		GotoXY(CONSOLE_COLS / 2 + 25, CREATE_COORD_Y - 2);
+		printf("%d / %d", selectedFile + 1, fileCount);
+	}
 	GotoXY(CONSOLE_COLS / 2 - 30, CREATE_COORD_Y - 1);
 	printf("忙式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式忖");
 	GotoXY(CONSOLE_COLS / 2 - 30, CREATE_COORD_Y);
@@ -57,6 +61,14 @@ static void RemoveFile() {
 	remove(fileName);
 	Init();
 }
+
+static void Quit() {
+	isActive = 0;
+	for (int i = 0; i < fileCount; i++) {
+		free(fileNames[i]);
+	}
+}
+
 static void Input() {
 	switch (GetInput()) {
 	case KEY_UP:
@@ -75,10 +87,10 @@ static void Input() {
 		if (fileCount) StartEdit(fileNames[selectedFile]);
 		break;
 	case KEY_U:
-		UploadFile(fileNames[selectedFile]);
+		if(fileCount) UploadFile(fileNames[selectedFile]);
 		break;
 	case KEY_Q:
-		isActive = 0;
+		Quit();
 		break;
 	}
 }

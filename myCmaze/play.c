@@ -55,10 +55,6 @@ static void DrawGuide() {
 	printf("탈출구($)에 도착하세요!");
 }
 
-static void Draw() {
-
-}
-
 static void Quit() {
 	free(stage);
 	isActive = 0;
@@ -80,6 +76,7 @@ static void TryMove(int dx, int dy) {
 	printf("@");
 
 }
+
 static void Input() {
 	switch (GetInput()) {
 	case KEY_UP:
@@ -99,10 +96,17 @@ static void Input() {
 	}
 }
 
+static void CheckClear() {
+	if (playerX == stage->endX && playerY == stage->endY) {
+		isActive = 0;
+		ShowMessage("스테이지 클리어!");
+	}
+}
+
 static void Loop() {
 	while (isActive) {
-		Draw();
 		Input();
+		CheckClear();
 	}
 }
 

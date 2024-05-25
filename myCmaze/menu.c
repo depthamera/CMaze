@@ -1,12 +1,23 @@
-#include "menu.h"
+Ôªø#include "menu.h"
 
 static int selectedMenu = 0;
-static char* menu[MENU_MAX] = { {"«√ ∑π ¿Ã"}, {"¡¶    ¿€"}, {"¥ŸøÓ∑ŒµÂ"}, {"¡æ    ∑·"} };
+static char* menu[MENU_MAX] = { {"ÎÇ¥ Ìåå Ïùº"}, {"Îã§Ïö¥Î°úÎìú"}, {"Ï¢Ö    Î£å"} };
 static void (*action[MENU_MAX])();
 
 static void Exit() { exit(0); }
 
+
 static void Draw() {
+	GotoXY(MENU_COORD_X - 19, MENU_COORD_Y - 10);
+	printf(" ,-----.,--.   ,--.  ,---.  ,-------. ,------. ");
+	GotoXY(MENU_COORD_X - 19, MENU_COORD_Y - 9);
+	printf("'  .--./|   `.'   | /        `--.   /|  .---' ");
+	GotoXY(MENU_COORD_X - 19, MENU_COORD_Y - 8);
+	printf("|  |    |  |'.'|  ||  .-.  |  /   /  |  `--,  ");
+	GotoXY(MENU_COORD_X - 19, MENU_COORD_Y - 7);
+	printf("'  '--' |  |   |  ||  | |  | /   `--.|  `---. ");
+	GotoXY(MENU_COORD_X - 19, MENU_COORD_Y - 6);
+	printf(" `-----'`--'   `--'`--' `--'`-------'`------' ");
 	for(int i = 0; i < MENU_MAX; i++) {
 		GotoXY(MENU_COORD_X, MENU_COORD_Y + MENU_COORD_DISTANCE_Y * i);
 		printf("% s", menu[i]);

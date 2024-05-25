@@ -8,7 +8,7 @@ static void GenerateEmptyStage() {
 	char str[100] = { 0, };
 
 	openedStage = (Stage*)malloc(sizeof(Stage));
-	openedStage->startX = openedStage->startY = openedStage->endX = openedStage->endY = -1;
+	openedStage->height = openedStage->weight = openedStage->startX = openedStage->startY = openedStage->endX = openedStage->endY = -1;
 	for (int i = 0; i < STAGE_HEIGHT_MAX; i++) {
 		for (int j = 0; j < STAGE_WEIGHT_MAX; j++) {
 			openedStage->map[i][j] = ' ';
@@ -16,14 +16,23 @@ static void GenerateEmptyStage() {
 	}
 
 
-	GotoXY(45, 20);
-	printf("생성할 스테이지의 높이 (최대 %d): ", STAGE_HEIGHT_MAX);
-	scanf("%d", &openedStage->height);
-	GotoXY(45, 22);
-	printf("생성할 스테이지의 넓이 (최대 %d): ", STAGE_WEIGHT_MAX);
-	scanf("%d", &openedStage->weight);
+	while (openedStage->height == -1 || openedStage->height < 1 || openedStage->height > STAGE_HEIGHT_MAX) {
+		system("cls");
+		GotoXY(45, 20);
+		printf("생성할 스테이지의 높이 (최대 %d): ", STAGE_HEIGHT_MAX);
+		scanf("%d", &openedStage->height);
+	}
+	
+	
+	while (openedStage->weight == -1 || openedStage->weight < 1 || openedStage->weight > STAGE_WEIGHT_MAX) {
+		system("cls");
+		GotoXY(45, 20);
+		printf("생성할 스테이지의 넓이 (최대 %d): ", STAGE_WEIGHT_MAX);
+		scanf("%d", &openedStage->weight);
+	}
 
-	GotoXY(45, 24);
+	system("cls");
+	GotoXY(45, 20);
 	printf("생성할 파일의 이름: ");
 	scanf("%s", str);
 	

@@ -28,7 +28,7 @@ void GotoXY(int x, int y) {
 }
 
 void ShowMessage(char* msg) {
-	int is_active = 1;
+	system("cls");
 	GotoXY(CONSOLE_COLS / 2 - 30, CONSOLE_LINES / 2 - 3);
 	printf("┌───────────────────────────────────────────────────────────┐");
 	GotoXY(CONSOLE_COLS / 2 - 30, CONSOLE_LINES / 2 - 2);
@@ -39,14 +39,13 @@ void ShowMessage(char* msg) {
 	printf("│");
 	GotoXY(CONSOLE_COLS / 2 - 30, CONSOLE_LINES / 2 - 1);
 	printf("└───────────────────────────────────────────────────────────┘");
-	GotoXY((CONSOLE_COLS - strlen(msg)) / 2 + 4, CONSOLE_LINES / 2);
+	GotoXY(CONSOLE_COLS / 2 - 7, CONSOLE_LINES / 2);
 	printf("Enter를 눌러 계속");
 
-	while (is_active) {
+	while (1) {
 		switch (GetInput()) {
 		case KEY_ENTER:
-			is_active = 0;
-			break;
+			return;
 		}
 	}
 }

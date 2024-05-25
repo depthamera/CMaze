@@ -41,6 +41,11 @@ static void DownloadFile() {
 	conn = mysql_init(NULL);
 	mysql_real_connect(conn, DB_HOST, DB_USER, DB_PASSWORD, DB_NAME, DB_PORT, NULL, 0);
 
+	if (!conn) {
+		ShowMessage("연결에 실패했습니다.");
+		return;
+	}
+
 	char sql[100] = { 0, };
 	char directory[100] = { 0, };
 
@@ -59,6 +64,8 @@ static void DownloadFile() {
 
 	fclose(fp);
 	mysql_close(conn);
+
+	ShowMessage("파일을 다운로드했습니다.");
 }
 
 static void Quit() {

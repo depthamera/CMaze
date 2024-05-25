@@ -11,7 +11,7 @@ void UploadFile(char* name) {
 	connection = mysql_real_connect(&con, DB_HOST, DB_USER, DB_PASSWORD, DB_NAME, DB_PORT, NULL, 0);
 
 	if (!connection) {
-		printf("연결 실패\n");
+		ShowMessage("연결에 실패했습니다.");
 		return;
 	}
 
@@ -33,8 +33,12 @@ void UploadFile(char* name) {
 	mysql_real_query(connection, query, len);
 	
 	if (mysql_errno(connection)) {
-		printf("업로드 실패");
+		ShowMessage("업로드 실패");
 	}
+	else {
+		ShowMessage("업로드 성공");
+	}
+
 	fclose(fp);
 	mysql_close(connection);
 }

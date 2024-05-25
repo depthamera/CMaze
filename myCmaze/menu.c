@@ -50,8 +50,8 @@ static void Loop() {
 }
 
 void MenuStart() {
-	action[1] = StartCreate;
-	action[2] = StartDownload;
-	action[3] = Exit;
+	action[0] = StartCreate;
+	action[1] = StartDownload;
+	action[2] = Exit;
 	Loop();
 }

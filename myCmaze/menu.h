@@ -1,7 +1,7 @@
 #pragma once
 #include "utility.h"
 #include "input.h"
-#include "create.h"
+#include "mystage.h"
 #include "download.h"
 
 #define MENU_MAX 3

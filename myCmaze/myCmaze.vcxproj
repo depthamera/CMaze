@@ -127,7 +127,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="create.c" />
+    <ClCompile Include="mystage.c" />
     <ClCompile Include="download.c" />
     <ClCompile Include="edit.c" />
     <ClCompile Include="input.c" />
@@ -139,7 +139,7 @@
     <ClCompile Include="utility.c" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="create.h" />
+    <ClInclude Include="mystage.h" />
     <ClInclude Include="database.h" />
     <ClInclude Include="download.h" />
     <ClInclude Include="edit.h" />

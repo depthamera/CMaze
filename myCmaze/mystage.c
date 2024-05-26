@@ -20,10 +20,6 @@ static void Init() {
 			fileCount++;
 		} while (FindNextFile(findHandle, &fd));
 	}
-
-	for (int i = 0; i < fileCount; i++) {
-		printf("%s\n", fileNames[i]);
-	}
 }
 
 static void Draw() {
@@ -31,6 +27,7 @@ static void Draw() {
 		GotoXY(CONSOLE_COLS / 2 + 25, CREATE_COORD_Y - 2);
 		printf("%d / %d", selectedFile + 1, fileCount);
 	}
+
 	GotoXY(CONSOLE_COLS / 2 - 30, CREATE_COORD_Y - 1);
 	printf("忙式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式忖");
 	GotoXY(CONSOLE_COLS / 2 - 30, CREATE_COORD_Y);
@@ -81,6 +78,7 @@ static void Input() {
 		break;
 	case KEY_C:
 		StartEdit(NULL);
+		Init();
 		break;
 	case KEY_D:
 		RemoveFile();

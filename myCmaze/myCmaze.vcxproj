@@ -134,7 +134,6 @@
     <ClCompile Include="main.c" />
     <ClCompile Include="menu.c" />
     <ClCompile Include="play.c" />
-    <ClCompile Include="stages.c" />
     <ClCompile Include="upload.c" />
     <ClCompile Include="utility.c" />
   </ItemGroup>
@@ -148,7 +147,6 @@
     <ClInclude Include="menu.h" />
     <ClInclude Include="play.h" />
     <ClInclude Include="stage.h" />
-    <ClInclude Include="stages.h" />
     <ClInclude Include="upload.h" />
     <ClInclude Include="utility.h" />
   </ItemGroup>

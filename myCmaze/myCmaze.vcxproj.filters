@@ -27,9 +27,6 @@
     <ClCompile Include="menu.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="stages.c">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="mystage.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
@@ -57,9 +54,6 @@
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="menu.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="stages.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="mystage.h">

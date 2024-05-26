@@ -92,6 +92,7 @@ static void Input() {
 		TryMove(1, 0);
 		break;
 	case KEY_Q:
+		Quit();
 		break;
 	}
 }

@@ -25,6 +25,8 @@ int GetInput() {
 		return KEY_D;
 	case 101:
 		return KEY_E;
+	case 114:
+		return KEY_R;
 	case 113:
 		return KEY_Q;
 	case 115:
@@ -34,7 +36,7 @@ int GetInput() {
 	case 119:
 		return KEY_W;
 	default:
-		return key;
+		return -1;
 	}
 	
 }

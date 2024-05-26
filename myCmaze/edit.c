@@ -99,8 +99,9 @@ static void DrawGuide() {
 	printf("W: 벽");
 	GotoXY(95, 13);
 	printf("E: 종료지점");
-
-	GotoXY(95, 15);
+	GotoXY(95, 14);
+	printf("R: 지우기");
+	GotoXY(95, 16);
 	printf("S: 저장 후 돌아가기");
 }
 
@@ -153,6 +154,11 @@ static void PutBlock(char b) {
 		GotoXY(pivotX + cursorX, pivotY + cursorY);
 		printf("#");
 		break;
+	default:
+		b = ' ';
+		GotoXY(pivotX + cursorX, pivotY + cursorY);
+		printf(" ");
+		break;
 	}
 	}
 	openedStage->map[cursorY][cursorX] = b;
@@ -186,6 +192,9 @@ static void Input() {
 		isActive = 0;
 		VisibleCursor(0);
 		break;
+	case KEY_R:
+		PutBlock(-1);
+		break;
 	}
 }
 
@@ -196,19 +205,22 @@ static void Loop() {
 	}
 }
 
-void StartEdit(char* name) {
+static void Init(char * name) {
 	system("cls");
 	isActive = 1;
+	cursorX = cursorY = 0;
 	if (!name) {
 		GenerateEmptyStage();
+		system("cls");
 	}
 	else {
 		OpenStage(name);
 	}
-	system("cls");
-
 	VisibleCursor(1);
 	DrawMap();
 	DrawGuide();
+}
+void StartEdit(char* name) {
+	Init(name);
 	Loop();
 }
